@@ -11,7 +11,7 @@ int main() {
   // Hint: C represents arrays as a pointer to the first element
   // Hint: one malloc call allocates memory for the entire array
   //       it works because the elements are stored side by side
-  ______ some_array = malloc(______);
+  __ some_array = malloc(______);
   printf("address of the start of the array: %p\n", some_array);
 
   // TODO: compute the address of the element at index 2 (0-indexed)
