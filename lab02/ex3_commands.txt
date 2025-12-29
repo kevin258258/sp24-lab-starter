@@ -3,3 +3,12 @@
 # Lines starting with # are comments, feel free to add any to document your commands
 
 # Please add your commands below this line
+start (run this program)
+b k(set a breakpoint in k line,or just b main)
+c(continue)
+step(use s,if next line calls a function,step into it)
+next(n,just run next line)
+finish(fin,exit current function)
+info locals(print the local variables in this stackframe)
+print(p var (check the variable)，p *ptr )
+q(quit,just quit)

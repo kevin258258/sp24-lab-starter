@@ -39,6 +39,15 @@ vector_t *bad_vector_new() {
    right way */
 /* TODO: uncomment the code that is preceded by // */
 vector_t *vector_new() {
+    vector_t *retval = malloc(sizeof(vector_t));
+    if (retval == NULL) {
+        allocation_failed();
+    }
+    retval ->size = 1;
+    retval -> data = malloc(sizeof(int));
+    retval -> data[0] = 0;
+    return retval;
+
     /* Declare what this function will return */
     // vector_t *retval;
 
@@ -51,7 +60,7 @@ vector_t *vector_new() {
     // }
 
     /* Now we need to initialize our data.
-       Since retval->data should be able to dynamically grow,
+    Since retval->data should be able to dynamically grow,
        what do you need to do? */
     // retval->size = /* YOUR CODE HERE */;
     // retval->data = /* YOUR CODE HERE */;
@@ -66,7 +75,6 @@ vector_t *vector_new() {
     // /* YOUR CODE HERE */ = 0;
 
     /* and return... */
-    return NULL; /* UPDATE RETURN VALUE */
 }
 
 /* Return the value at the specified location/component "loc" of the vector */
@@ -77,17 +85,30 @@ int vector_get(vector_t *v, size_t loc) {
         fprintf(stderr, "vector_get: passed a NULL vector.\n");
         abort();
     }
+    if( loc >= (v->size)){
+        return 0;
+    }
+
+    return v->data[loc];
+
 
     /* If the requested location is higher than we have allocated, return 0.
      * Otherwise, return what is in the passed location.
      */
     /* YOUR CODE HERE */
-    return 0;
 }
 
 /* Free up the memory allocated for the passed vector.
    Remember, you need to free up ALL the memory that was allocated. */
 void vector_delete(vector_t *v) {
+    if(v == NULL){
+        fprintf(stderr, "vector_del: passed a NULL vector.\n");
+        abort();
+
+    }
+    free(v->data);
+    free(v);
+    
     /* YOUR CODE HERE */
 }
 
@@ -97,6 +118,22 @@ void vector_set(vector_t *v, size_t loc, int value) {
     /* What do you need to do if the location is greater than the size we have
      * allocated?  Remember that unset locations should contain a value of 0.
      */
+    if (v == NULL)
+    {
+        abort;
+    }
+    
+    if(loc >= v->size){
+        int size1 = v->size;
+        v->data = realloc(v->data,(loc + 1) * sizeof(int));
+        v->size = loc + 1;
+        for(int i = size1;i < loc;i++){
+            v->data[i] = 0;
+        }
+    
+        
+    }
+    v->data[loc] = value;
 
     /* YOUR CODE HERE */
 }

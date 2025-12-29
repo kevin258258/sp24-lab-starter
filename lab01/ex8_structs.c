@@ -23,9 +23,9 @@ int main() {
   // TODO: set student's id field to 5
   // Hint: the dot notation accesses a struct's fields
   student.id = 5;
-
+  
   // TODO: print out student's id field
   printf("Student's ID: %d\n", student.id);
 
-  return 0;
+  return 0;                           
 }
